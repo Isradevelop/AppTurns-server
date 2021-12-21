@@ -10,7 +10,7 @@ const router = Router();
 //crear un nuevo calendario
 router.post('/new',[
     check('employeeName', 'El nombre es obligatorio').not().isEmpty(),
-    check('shifts', 'Lod días son obligatorios').not().isEmpty(),
+    check('shifts', 'Los días son obligatorios').not().isEmpty(),
     validate
 ], createSchedule);
 

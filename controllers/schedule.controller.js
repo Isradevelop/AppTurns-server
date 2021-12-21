@@ -1,4 +1,5 @@
 const { request } = require("express");
+const { DateTime } = require("luxon");
 const Employee = require("../models/Employee");
 
 const Schedule = require('../models/Schedule');
@@ -6,8 +7,11 @@ const Schedule = require('../models/Schedule');
 //crear nuevo calendario
 const createSchedule = async(req, res) =>{
 
-    const { weekNumber, employeeName, dates, shifts} = req.body;
-
+    const { employeeName, dates, shifts, year, month} = req.body;
+    
+    //week number
+    const weekNumber = DateTime.local(parseInt(year), parseInt(month), parseInt(dates[0])).weekNumber;
+    
     const employeeBD = await Employee.findOne({name: employeeName});
 
     //comprobamos que el usuario pasado existe

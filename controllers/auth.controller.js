@@ -50,7 +50,8 @@ const login = async(req, res) => {
     } catch (error) {
         return res.status(500).json({
             ok:false,
-            msg: 'Problema al hacer login. Hable con el administrador.'
+            msg: 'Problema al hacer login. Hable con el administrador.',
+            error
         });
     }
     

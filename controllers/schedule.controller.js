@@ -1,4 +1,4 @@
-const { request } = require("express");
+
 const { DateTime } = require("luxon");
 const Employee = require("../models/Employee");
 
@@ -63,13 +63,13 @@ const getSchedulesPerWeekNumber = async(req, res)=>{
 
     const { weekNumber } = req.params;
 
-    const schedulePerWeekList = await Schedule.find({weekNumber});
+    const scheduleByWeekList = await Schedule.find({weekNumber});
 
-    if(schedulePerWeekList){
+    if(scheduleByWeekList){
 
         return res.json({
             ok: true,
-            schedulePerWeekList
+            scheduleByWeekList
         });
     }else{
 

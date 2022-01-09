@@ -86,7 +86,7 @@ const getSchedulesPerWeekNumber = async(req, res)=>{
 const schedulesByName = async(req, res) =>{
     const { name } = req.params;
 
-    const scheduleByNameList = await Schedule.find({name});
+    const scheduleByNameList = await Schedule.find({employeeName : name});
 
     if(scheduleByNameList){
 

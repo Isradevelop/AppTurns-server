@@ -14,6 +14,7 @@ router.get('/', getShift);
 router.post('/',[
     check('name', 'El nombre es obligatorio').not().isEmpty(),
     check('shift', 'El horario es obligatorio').not().isEmpty(),
+    check('nightHours', 'Las horas nocturnas son obligatorias').not().isEmpty(),
     validate
 ], createShift);
 

@@ -11,7 +11,12 @@ const ShiftSchema = Schema({
         type: String,
         required: true,
         unique: true
+    },
+    nightHours:{
+        type: Number,
+        required: true,
     }
+
 });
 
 

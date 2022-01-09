@@ -82,6 +82,26 @@ const getSchedulesPerWeekNumber = async(req, res)=>{
 
 }
 
+//obtener calendarios de un empleado
+const schedulesByName = async(req, res) =>{
+    const { name } = req.params;
+
+    const scheduleByNameList = await Schedule.find({name});
+
+    if(scheduleByNameList){
+
+        return res.json(
+            scheduleByNameList
+        );
+    }else{
+
+        return res.status(400).json({
+            ok: false,
+            msg: 'Ha habido algún problema con la BD al consultar los calendarios por nombre de empleado'
+        })        
+    }
+}
+
 
 //actualizar calendario
 const updateSchedule = async(req, res) =>{
@@ -102,5 +122,6 @@ module.exports = {
     getSchedules,
     updateSchedule,
     getSchedulesPerWeekNumber,
+    schedulesByName
     
 }

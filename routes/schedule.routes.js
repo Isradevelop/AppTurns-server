@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 
-const { createSchedule, getSchedules, updateSchedule, getSchedulesPerWeekNumber } = require('../controllers/schedule.controller');
+const { createSchedule, getSchedules, updateSchedule, getSchedulesPerWeekNumber, schedulesByName } = require('../controllers/schedule.controller');
 const { validate } = require('../middlewares/validate');
 
 const router = Router();
@@ -22,6 +22,9 @@ router.get('/:weekNumber', getSchedulesPerWeekNumber);
 
 //modifica un calendario
 router.put('/', updateSchedule);
+
+//consulta los calendarios por nombre de empleado
+router.get('/scheduleByName/:name', schedulesByName);
 
 
 module.exports= router;

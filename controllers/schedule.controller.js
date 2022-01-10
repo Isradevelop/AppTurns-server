@@ -33,6 +33,18 @@ const createSchedule = async(req, res) =>{
         });
     }
 
+    //comprobamos que el usuario no tenga calendario creado para esa semana
+    const scheduleByNameList = await Schedule.find({employeeName});
+    scheduleByNameList.forEach(schedule =>{
+        
+        if(schedule.weekNumber === weekNumber){
+            return res.status(400).json({
+                ok: false,
+                msg: 'El usuario ya tiene un calendario con la fecha actual'
+            });
+        }
+    })
+
     const schedule = await Schedule.create({weekNumber, employeeName, dates, shifts});
 
     if(schedule){

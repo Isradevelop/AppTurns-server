@@ -51,12 +51,12 @@ const sendMail = async(affectedEmp, applicantEmp,type) =>{
 
     /////   NODEMAILER   ////
     const transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
+        host: "smtp.gmail.com",
         port: 465,
-        secure: true, // use SSL
+        secure: true,
         auth: {
             user: 'isradevelop@gmail.com',
-            pass: 'Isra251180'
+            pass: 'yyulkbdzkwnerdpt'
         }
     });
 

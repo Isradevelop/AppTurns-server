@@ -8,9 +8,20 @@ const Schedule = require('../models/Schedule');
 const createSchedule = async(req, res) =>{
 
     const { employeeName, dates, shifts, year, month} = req.body;
-    
+
     //week number
     const weekNumber = DateTime.local(parseInt(year), parseInt(month), parseInt(dates[0])).weekNumber;
+
+    //wek number validation
+    const currentWeekNumber = DateTime.local().weekNumber;
+    
+    if(weekNumber <= currentWeekNumber){
+        console.log('Menor');
+        return res.json({
+            ok:false,
+            msg: 'No se pueden crear calendarios con fechas anteriores a la actual'
+        })
+    }
     
     const employeeBD = await Employee.findOne({name: employeeName});
 

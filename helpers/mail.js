@@ -51,10 +51,21 @@ const sendMail = async(affectedEmp, applicantEmp,type) =>{
 
     /////   NODEMAILER   ////
     const transporter = nodemailer.createTransport({
-        service: 'gmail',
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true, // use SSL
         auth: {
             user: 'isradevelop@gmail.com',
             pass: 'Isra251180'
+        }
+    });
+
+    // verify connection configuration
+    transporter.verify(function (error, success) {
+        if (error) {
+        console.log(error);
+        } else {
+        console.log("Server is ready to take our messages");
         }
     });
 

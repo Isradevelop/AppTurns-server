@@ -19,7 +19,7 @@ const createSchedule = async(req, res) =>{
         console.log('Menor');
         return res.status(400).json({
             ok:false,
-            msg: 'No se pueden crear calendarios con fechas anteriores a la actual'
+            msg: 'No se pueden crear calendarios con fecha igual o anterior a la actual'
         })
     }
     

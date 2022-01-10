@@ -43,7 +43,7 @@ const createSchedule = async(req, res) =>{
         }
     });
 
-    if(scheduleByNameList){
+    if(!scheduleByNameList){
         return res.status(400).json({
             ok: false,
             msg: 'El usuario ya tiene un calendario con la fecha actual'

@@ -17,7 +17,7 @@ const createSchedule = async(req, res) =>{
     
     if(weekNumber <= currentWeekNumber){
         console.log('Menor');
-        return res.json({
+        return res.status(400).json({
             ok:false,
             msg: 'No se pueden crear calendarios con fechas anteriores a la actual'
         })
@@ -36,7 +36,7 @@ const createSchedule = async(req, res) =>{
     //comprobamos que el usuario no tenga calendario creado para esa semana
     const scheduleByNameList = await Schedule.find({employeeName});
     scheduleByNameList.forEach(schedule =>{
-        
+
         if(schedule.weekNumber === weekNumber){
             return res.status(400).json({
                 ok: false,

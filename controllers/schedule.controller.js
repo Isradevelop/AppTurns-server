@@ -35,7 +35,7 @@ const createSchedule = async(req, res) =>{
 
     //comprobamos que el usuario no tenga calendario creado para esa semana
     const scheduleByNameList = await Schedule.find({employeeName});
-    const checkExistsSchedule = false;
+    let checkExistsSchedule = false;
     scheduleByNameList.forEach(schedule =>{
 
         if(schedule.weekNumber === weekNumber){
